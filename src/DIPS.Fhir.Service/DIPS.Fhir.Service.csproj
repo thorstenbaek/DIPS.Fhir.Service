@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>DIPS.Fhir.Service</RootNamespace>
+    <UserSecretsId>fabe8f05-56d5-4dbf-af53-02c96937442a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+    <AssemblyName>DIPS.Fhir.Service</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="FakesAssemblies\**" />
+    <Content Remove="FakesAssemblies\**" />
+    <EmbeddedResource Remove="FakesAssemblies\**" />
+    <None Remove="FakesAssemblies\**" />
+    <None Remove="Models/*.hbm.xml" />
+    <EmbeddedResource Include="Models/*.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JUST.net" Version="4.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="NHibernate.Extensions.NpgSql" Version="3.1.8" />
+    <PackageReference Include="NHibernate.NetCore" Version="3.1.7" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="FhirData\metadata.json" />
+    <Content Remove="FhirData\wellknown.json" />
+    <Content Remove="Transformers\observation-transformer1.json" />
+    <Content Remove="Transformers\observation-transformer2.json" />
+    <Content Remove="Transformers\observation-transformer3.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="FhirData\metadata.json" />
+    <EmbeddedResource Include="FhirData\wellknown.json" />
+    <EmbeddedResource Include="Transformers\observation-transformer3.json" />
+    <EmbeddedResource Include="Transformers\observation-transformer2.json" />
+    <EmbeddedResource Include="Transformers\observation-transformer1.json" />
+  </ItemGroup>
+
+
+</Project>

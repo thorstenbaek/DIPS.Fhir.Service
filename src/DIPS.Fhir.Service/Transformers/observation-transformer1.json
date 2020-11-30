@@ -1,0 +1,12 @@
+{
+  "#": [
+    "#copy($)",
+    "#delete($.value)",
+    "#delete($.effective)",
+    "#delete($.subject)"
+  ],
+  "valueQuantity": "#valueof($.value.Quantity)",
+  "effectiveDateTime": "#valueof($.effective.dateTime)",
+  "subjectReference": "#xconcat(#valueof($.subject.resourceType),//,#valueof($.subject.id))"
+}
+

@@ -1,0 +1,7 @@
+{
+  "#": [
+    "#copy($)",
+    "#replace($.subject.reference,#valueof($.subjectReference))",
+    "#delete($.subjectReference)"
+  ]
+}

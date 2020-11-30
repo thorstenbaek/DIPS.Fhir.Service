@@ -1,0 +1,45 @@
+{
+  "id": "o3-10f43ea3-30fa-449d-ad65-9a84b0c7407a",
+  "code": {
+    "text": "Body Height",
+    "coding": [
+      {
+        "code": "8302-2",
+        "system": "http://loinc.org",
+        "display": "Body Height"
+      }
+    ]
+  },
+  "value": {
+    "Quantity": {
+      "code": "cm",
+      "unit": "cm",
+      "value": 49.2,
+      "system": "http://unitsofmeasure.org"
+    }
+  },
+  "issued": "2018-12-14T10:09:26.488-05:00",
+  "status": "final",
+  "subject": {
+    "id": "62247e85-c8c1-4047-90b3-e0b3a9c59600",
+    "resourceType": "Patient"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "display": "vital-signs"
+        }
+      ]
+    }
+  ],
+  "effective": {
+    "dateTime": "2018-12-14T10:09:26-05:00"
+  },
+  "encounter": {
+    "reference": "Encounter/361a1abd-ccdd-4d80-b64c-aa965c72c5ee"
+  },
+  "resourceType": "Observation"
+}
