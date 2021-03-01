@@ -1,12 +1,6 @@
-﻿using System;
-using System.Text.Json;
-
-namespace DIPS.Fhir.Service.Entities
+﻿namespace DIPS.Fhir.Service.Entities
 {
-    public class PatientEntity
+    public class PatientEntity : ResourceEntity
     {
-        public virtual string Id { get; set; }
-
-        public virtual JsonElement Resource { get; set; }
     }
 }

@@ -5,10 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NHibernate.NetCore;
-using NHibernate.Cfg;
 using DIPS.Fhir.Service.Entities;
 using System;
 using DIPS.Fhir.Service.Transformers;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 
 namespace DIPS.Fhir.Service
 {
@@ -40,6 +41,7 @@ namespace DIPS.Fhir.Service
             var mapper = new NHibernate.Mapping.ByCode.ModelMapper();
             mapper.AddMapping<PatientMapping>();
             mapper.AddMapping<ObservationMapping>();
+            mapper.AddMapping<DocumentReferenceMapping>();
 
             var mapping = mapper.CompileMappingForAllExplicitlyAddedEntities();
             configuration.AddMapping(mapping);
@@ -51,6 +53,19 @@ namespace DIPS.Fhir.Service
             services.AddHibernate(configuration);
 
             services.AddControllers();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(
+                    "v1", 
+                    new OpenApiInfo 
+                    { 
+                        Title = "DIPS FHIR API", 
+                        Version = "v1" 
+                    });
+            });
 
             services.AddCors(options =>
             {
@@ -66,6 +81,13 @@ namespace DIPS.Fhir.Service
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             // Use loggerFactory as NHibernate logger factory.
             loggerFactory.UseAsHibernateLoggerFactory();
 
