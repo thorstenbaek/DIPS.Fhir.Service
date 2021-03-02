@@ -40,6 +40,8 @@ namespace DIPS.Fhir.Service
 
             var mapper = new NHibernate.Mapping.ByCode.ModelMapper();
             mapper.AddMapping<PatientMapping>();
+            mapper.AddMapping<PractitionerMapping>();
+            mapper.AddMapping<EncounterMapping>();
             mapper.AddMapping<ObservationMapping>();
             mapper.AddMapping<DocumentReferenceMapping>();
 

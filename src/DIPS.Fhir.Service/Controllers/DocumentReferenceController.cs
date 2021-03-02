@@ -1,21 +1,20 @@
 ﻿using DIPS.Fhir.Service.Entities;
+using DIPS.Fhir.Service.Models;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DIPS.Fhir.Service.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DocumentReferenceController : Controller
+    public class DocumentReferenceController : ResourceController
     {
-        private ISessionFactory SessionFactory;
-
         public DocumentReferenceController(ISessionFactory sessionFactory)
-        {
-            SessionFactory = sessionFactory;                
-        }
+            : base(sessionFactory)
+        {}
 
         [HttpGet("")]
         public async Task<IActionResult> Get([FromQuery] string patient = "")
@@ -29,8 +28,8 @@ namespace DIPS.Fhir.Service.Controllers
                 var sqlQuery = session.CreateSQLQuery(sqlString);
                 sqlQuery.AddEntity("p", typeof(DocumentReferenceEntity));
 
-                var observations = await sqlQuery.ListAsync<DocumentReferenceEntity>();
-                return Ok(observations);
+                var documentReferences = await sqlQuery.ListAsync<DocumentReferenceEntity>();
+                return Ok(new Bundle(documentReferences.Select(p => new DocumentReference(p, UrlTemplate)).ToList(), "", documentReferences.Count));
             }
         }
     }
