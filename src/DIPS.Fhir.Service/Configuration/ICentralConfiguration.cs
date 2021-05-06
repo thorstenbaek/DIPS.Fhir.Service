@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace DIPS.Fhir.Service
+namespace DIPS.Fhir.Service.Configuration
 {
     public interface ICentralConfiguration
     {

@@ -12,22 +12,24 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "patient",
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONFIGURATION_SERVICE_URI": "https://dips-ehr-configuration.api.dips.no",
-        "ENVIRONMENT": "dips-ehr-app.localhost",
+        "CONFIGURATION_SERVICE_URI": "https://raw.githubusercontent.com/thorstenbaek/sandbox-environments/master",
+        "RELEASE_NAME": "master",
+        "HOST_NAME": "localhost",
         "CONNECTION_STRING": "server=localhost;database=fhirbase;user id=postgres;password=postgres;"
       }
     },
     "DIPS.Fhir.Service": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "patient",
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONFIGURATION_SERVICE_URI": "https://dips-ehr-configuration.api.dips.no",
-        "ENVIRONMENT": "dips-ehr-app.localhost",
+        "CONFIGURATION_SERVICE_URI": "https://raw.githubusercontent.com/thorstenbaek/sandbox-environments/master",
+        "RELEASE_NAME": "master",
+        "HOST_NAME": "localhost",
         "CONNECTION_STRING": "server=localhost;database=fhirbase;user id=postgres;password=postgres;"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"

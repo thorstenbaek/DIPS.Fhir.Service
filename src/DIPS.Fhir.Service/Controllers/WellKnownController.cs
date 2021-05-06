@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DIPS.Fhir.Service.Configuration;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 using System.Text.Json;

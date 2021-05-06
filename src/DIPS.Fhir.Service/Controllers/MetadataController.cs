@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System;
 using System.IO;
+using DIPS.Fhir.Service.Configuration;
 
 namespace DIPS.Fhir.Service.Controllers
 {

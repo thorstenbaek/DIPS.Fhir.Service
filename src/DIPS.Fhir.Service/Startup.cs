@@ -10,6 +10,7 @@ using System;
 using DIPS.Fhir.Service.Transformers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using DIPS.Fhir.Service.Configuration;
 
 namespace DIPS.Fhir.Service
 {
@@ -48,8 +49,10 @@ namespace DIPS.Fhir.Service
             var mapping = mapper.CompileMappingForAllExplicitlyAddedEntities();
             configuration.AddMapping(mapping);
 
-            services.AddSingleton<ICentralConfiguration>(new CentralConfiguration());
-            services.AddSingleton<IObservationTransformer>(new ObservationTransformer());
+            services.AddSingleton<IEnvironment, EnvironmentImpl>();
+            services.AddSingleton<IConfigurationLoader, ConfigurationLoader>();
+            services.AddSingleton<ICentralConfiguration, CentralConfiguration>();
+            services.AddSingleton<IObservationTransformer, ObservationTransformer>();
 
             // add NHibernate services;
             services.AddHibernate(configuration);
